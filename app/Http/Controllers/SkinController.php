@@ -13,6 +13,12 @@ class SkinController extends Controller
     public function index()
     {
         $skins = Skin::all();
+
+        // esto es para verificar si la solicitud viene del panel admin
+        if (request()->is('skins') || request()->is('skins/*')) {
+            return view('skins.index', compact('skins'));
+        }
+
         return view('wiki.index', compact('skins'));
     }
 
@@ -68,7 +74,7 @@ class SkinController extends Controller
     public function update(Request $request, string $id)
     {
         $skin = Skin::findOrFail($id);
-        
+
         $request->validate([
             'nombre' => 'required|string|max:255',
             'descripcion' => 'required|string',

@@ -30,6 +30,7 @@
                         <li class="nav-item"><a class="nav-link" href="#lossiete">Los Siete</a></li>
                         <li class="nav-item"><a class="nav-link" href="#armas">Armas</a></li>
                         <li class="nav-item"><a class="nav-link" href="#mapa">Mapa</a></li>
+                        <li class="nav-item"><a class="nav-link" href="/skins" style="color: #ff00ff !important; font-weight: bold;">🎮 Panel Admin</a></li>
                     </ul>
                 </div>
             </div>
