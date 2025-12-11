@@ -45,9 +45,9 @@
         <label id="lblfiltro">Filtrar por rareza:</label>
         <select id="filterRareza" class="form-select d-inline w-auto mx-2">
             <option value="todos">Todos</option>
-            <option value="Comun">Común</option>
+            <option value="Común">Común</option>
             <option value="Raro">Raro</option>
-            <option value="Epico">Épico</option>
+            <option value="Épico">Épico</option>
             <option value="Legendaria">Legendaria</option>
         </select>
     </div>
@@ -57,196 +57,48 @@
         <h2 class="text-center mb-4" id="skinh">SKINS</h2>
 
         <div class="row g-4">
+            @foreach($skins->where('tipo', 'skin') as $skin)
             <div class="col-12 col-md-6 col-lg-4 col-xl-3">
                 <div class="card h-100">
-                    <img src="{{ asset('assets/img/Chani.webp') }}" alt="card-img-top" alt="skin 1">
+                    <img src="{{ asset($skin->imagen) }}" class="card-img-top" alt="{{ $skin->nombre }}">
                     <div class="card-body">
-                        <h5 class="card-title">Chani</h5>
-                        <p class="card-text">Un poderoso guerrero Fremen y un hábil superviviente.</p>
+                        <h5 class="card-title">{{ $skin->nombre }}</h5>
+                        <p class="card-text">{{ $skin->descripcion }}</p>
                         <p class="text-muted">
-                            <strong>Rareza:</strong> Epico<br>
-                            <strong>Temporada:</strong> Capítulo 2 - Temporada 8<br>
-                            <strong>Fecha de Lanzamiento</strong> 20 de Octubre de 2021
+                            <strong>Rareza:</strong> {{ $skin->rareza }}<br>
+                            <strong>Temporada:</strong> {{ $skin->temporada }}<br>
+                            <strong>Fecha de Lanzamiento:</strong> {{ $skin->fecha_lanzamiento->format('d/m/Y') }}
                         </p>
                     </div>
                 </div>
             </div>
-
-            <div class="col-12 col-md-6 col-lg-4 col-xl-3">
-                <div class="card h-100">
-                    <img src="{{ asset('assets/img/reaccion.png') }}" alt="card-img-top" alt="skin 1">
-                    <div class="card-body">
-                        <h5 class="card-title">Reaccion</h5>
-                        <p class="card-text">Devolver el Golpe</p>
-                        <p class="text-muted">
-                            <strong>Rareza:</strong> Legendaria<br>
-                            <strong>Temporada:</strong> Capítulo 2 - Temporada 4<br>
-                            <strong>Fecha de Lanzamiento</strong> 11 de Septiembre de 2020
-                        </p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-12 col-md-6 col-lg-4 col-xl-3">
-                <div class="card h-100">
-                    <img src="{{ asset('assets/img/brujaSurf.png') }}" alt="card-img-top" alt="skin 1">
-                    <div class="card-body">
-                        <h5 class="card-title">Bruja del Surf</h5>
-                        <p class="card-text">Maldice la playa con tu oscura presencia</p>
-                        <p class="text-muted">
-                            <strong>Rareza:</strong> Legendaria<br>
-                            <strong>Temporada:</strong> Capítulo 2 - Temporada 3<br>
-                            <strong>Fecha de Lanzamiento:</strong> 30 de Junio del 2020
-                        </p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-12 col-md-6 col-lg-4 col-xl-3">
-                <div class="card h-100">
-                    <img src="{{ asset('assets/img/catwomanTrajeComic.png') }}" class="card-img-top" alt="skin 4">
-                    <div class="card-body">
-                        <h5 class="card-title">Traje de Cómic de Catwoman</h5>
-                        <p class="card-text">La Gata Fatal de Gotham</p>
-                        <p class="text-muted">
-                            <strong>Rareza:</strong> Comun<br>
-                            <strong>Temporada:</strong> Temporada X<br>
-                            <strong>Fecha de Lanzamiento:</strong> 21 de Septiembre del 2019
-                        </p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-12 col-md-6 col-lg-4 col-xl-3">
-                <div class="card h-100">
-                    <img src="{{ asset('assets/img/parPatroller.png') }}" class="card-img-top" alt="skin 5">
-                    <div class="card-body">
-                        <h5 class="card-title">Par Patroller</h5>
-                        <p class="card-text">La Paciencia y la Concentración ganan la partida</p>
-                        <p class="text-muted">
-                            <strong>Rareza:</strong> Comun<br>
-                            <strong>Temporada:</strong> Capítulo 2 - Temporada 3<br>
-                            <strong>Fecha de Lanzamiento</strong> 19 de Julio del 2020
-                        </p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-12 col-md-6 col-lg-4 col-xl-3">
-                <div class="card h-100">
-                    <img src="{{ asset('assets/img/ecoSkin.png') }}" class="card-img-top" alt="skin 6">
-                    <div class="card-body">
-                        <h5 class="card-title">Eco</h5>
-                        <p class="card-text">¿Eres Real o Solo un Reflejo?</p>
-                        <p class="text-muted">
-                            <strong>Rareza:</strong> Raro<br>
-                            <strong>Temporada:</strong> Capítulo 2 - Temporada 2<br>
-                            <strong>Fecha de Lanzamiento:</strong> 7 de Marzo del 2020
-                        </p>
-                    </div>
-                </div>
-            </div>
+            @endforeach
         </div>
+    </main>
 
-        <section id="lossiete" class="container py-4">
+    <section id="lossiete" class="container py-4">
 
-            <h2 class="text-center mb-4">Los Siete</h2>
+        <h2 class="text-center mb-4">Los Siete</h2>
 
-            <div class="row g-4">
-
-                <div class="col-12 col-md-6 col-lg-4 col-xl-3">
-                    <div class="card h-100">
-                        <img src="{{ asset('assets/img/paradigma.png') }}" class="card-img-top" alt="skin 7">
-                        <div class="card-body">
-                            <h5 class="card-title">Paradigma</h5>
-                            <p class="card-text">Su deber Desafía la realidad. Una de los Siete</p>
-                            <p class="text-muted">
-                                <strong>Rareza:</strong> Legendaria<br>
-                                <strong>Temporada:</strong> Capítulo 3 - Temporada 4<br>
-                                <strong>Fecha de Lanzamiento:</strong> 18 de Septiembre del 2022
-                            </p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-12 col-md-6 col-lg-4 col-xl-3">
-                    <div class="card h-100">
-                        <img src="{{ asset('assets/img/laImaginada.png') }}" class="card-img-top" alt="skin 8">
-                        <div class="card-body">
-                            <h5 class="card-title">La Imaginada</h5>
-                            <p class="card-text">Su pasado es la clave de nuestro futuro. Parte de Los Siete</p>
-                            <p class="text-muted">
-                                <strong>Rareza:</strong> Legendaria<br>
-                                <strong>Temporada:</strong> Capítulo 3 - Temporada 2<br>
-                                <strong>Fecha de Lanzamiento:</strong> 20 de Marzo del 2022
-                            </p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-12 col-md-6 col-lg-4 col-xl-3">
-                    <div class="card h-100">
-                        <img src="{{ asset('assets/img/laFundicion.png') }}" class="card-img-top" alt="skin 9">
-                        <div class="card-body">
-                            <h5 class="card-title">La Fundación</h5>
-                            <p class="card-text">Su Misión es la totalidad. Lider de Los Siete</p>
-                            <p class="text-muted">
-                                <strong>Rareza:</strong> Legendaria<br>
-                                <strong>Temporada:</strong> Capítulo 3 - Temporada 1<br>
-                                <strong>Fecha de Lanzamiento:</strong> 3 de Febrero del 2022
-                            </p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-12 col-md-6 col-lg-4 col-xl-3">
-                    <div class="card h-100">
-                        <img src="{{ asset('assets/img/realidad1Paradigma.png') }}" class="card-img-top"
-                            alt="skin 10">
-                        <div class="card-body">
-                            <h5 class="card-title">El Paradigma Realidad 1</h5>
-                            <p class="card-text">Su Lealtad es Desconocida</p>
-                            <p class="text-muted">
-                                <strong>Rareza:</strong> Legendaria<br>
-                                <strong>Temporada:</strong> Temporada X<br>
-                                <strong>Fecha de Lanzamiento:</strong> 11 de Octubre del 2019
-                            </p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-12 col-md-6 col-lg-4 col-xl-3">
-                    <div class="card h-100">
-                        <img src="{{ asset('assets/img/The-Origin.webp') }}" class="card-img-top" alt="skin 11">
-                        <div class="card-body">
-                            <h5 class="card-title">El Origen</h5>
-                            <p class="card-text">Su realidad sigue viva. Parte de Los Siete</p>
-                            <p class="text-muted">
-                                <strong>Rareza:</strong> Legendaria<br>
-                                <strong>Temporada:</strong> Capitulo 3, Temporada 2<br>
-                                <strong>Fecha de Lanzamiento</strong> 20 de Marzo del 2022
-                            </p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-12 col-md-6 col-lg-4 col-xl-3">
-                    <div class="card h-100">
-                        <img src="{{ asset('assets/img/elVisitante.png') }}" class="card-img-top" alt="skin 12">
-                        <div class="card-body">
-                            <h5 class="card-title">El Visitante</h5>
-                            <p class="card-text">Intenciones Desconocidas</p>
-                            <p class="text-muted">
-                                <strong>Rareza:</strong> Legendaria<br>
-                                <strong>Temporada:</strong> Temporada 4<br>
-                                <strong>Fecha de Lanzamiento</strong> 1 de Mayo del 2018
-                            </p>
-                        </div>
+        <div class="row g-4">
+            @foreach($skins->where('tipo', 'los_siete') as $skin)
+            <div class="col-12 col-md-6 col-lg-4 col-xl-3">
+                <div class="card h-100">
+                    <img src="{{ asset($skin->imagen) }}" class="card-img-top" alt="{{ $skin->nombre }}">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ $skin->nombre }}</h5>
+                        <p class="card-text">{{ $skin->descripcion }}</p>
+                        <p class="text-muted">
+                            <strong>Rareza:</strong> {{ $skin->rareza }}<br>
+                            <strong>Temporada:</strong> {{ $skin->temporada }}<br>
+                            <strong>Fecha de Lanzamiento:</strong> {{ $skin->fecha_lanzamiento->format('d/m/Y') }}
+                        </p>
                     </div>
                 </div>
             </div>
-        </section>
-    </main>
+            @endforeach
+        </div>
+    </section>
 
     <section id="armas" class="container py-5">
         <h2 class="text-center mb-4">Armas</h2>

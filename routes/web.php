@@ -1,7 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\SkinController;
 
-Route::get('/', function () {
-    return view('wiki/index');
-});
+Route::get('/', [SkinController::class, 'index']);
+
+Route::resource('skins', SkinController::class);
