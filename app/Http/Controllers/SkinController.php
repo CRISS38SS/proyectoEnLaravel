@@ -12,6 +12,7 @@ class SkinController extends Controller
      */
     public function index()
     {
+        //obtiene las skins de la base de datos
         $skins = Skin::all();
 
         // esto es para verificar si la solicitud viene del panel admin
@@ -25,6 +26,8 @@ class SkinController extends Controller
     /**
      * Show the form for creating a new resource.
      */
+
+    // esto muestra el formulario, pero no guarda nada en la base de datos
     public function create()
     {
         return view('skins.create');
@@ -33,7 +36,10 @@ class SkinController extends Controller
     /**
      * Store a newly created resource in storage.
      */
+
+    // esto si guarda en la base de datos 
     public function store(Request $request)
+    // esto recibe los datos
     {
         $request->validate([
             'nombre' => 'required|string|max:255',
@@ -45,8 +51,10 @@ class SkinController extends Controller
             'tipo' => 'required|in:skin,los_siete'
         ]);
 
+        // esto crea la skin en la base de datos
         Skin::create($request->all());
 
+        // redirije a la ruta index
         return redirect()->route('skins.index')->with('success', 'Skin creada exitosamente.');
     }
 
@@ -55,6 +63,7 @@ class SkinController extends Controller
      */
     public function show(string $id)
     {
+        //Busca la skin por id
         $skin = Skin::findOrFail($id);
         return view('skins.show', compact('skin'));
     }
@@ -62,6 +71,8 @@ class SkinController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
+
+    // esto carga la skin y llena los datos
     public function edit(string $id)
     {
         $skin = Skin::findOrFail($id);
@@ -71,10 +82,13 @@ class SkinController extends Controller
     /**
      * Update the specified resource in storage.
      */
+
+    //busca la skin
     public function update(Request $request, string $id)
     {
         $skin = Skin::findOrFail($id);
 
+        // verifica los datos
         $request->validate([
             'nombre' => 'required|string|max:255',
             'descripcion' => 'required|string',
@@ -85,6 +99,7 @@ class SkinController extends Controller
             'tipo' => 'required|in:skin,los_siete'
         ]);
 
+        // los actualiza
         $skin->update($request->all());
 
         return redirect()->route('skins.index')->with('success', 'Skin actualizada exitosamente.');
@@ -93,6 +108,8 @@ class SkinController extends Controller
     /**
      * Remove the specified resource from storage.
      */
+
+    // esto elimina la skin
     public function destroy(string $id)
     {
         $skin = Skin::findOrFail($id);

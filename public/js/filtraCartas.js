@@ -5,12 +5,12 @@ document.getElementById('filterRareza').addEventListener('change', function () {
     cards.forEach(card => {
         const rarezaElement = card.querySelector('.text-muted');
         const rarezaText = rarezaElement.textContent;
-        
-        // Extraer la rareza del texto (buscar después de "Rareza:")
+
+        // obtiene la rareza
         const match = rarezaText.match(/Rareza:\s*([^\n<]+)/);
         const rarezaSkin = match ? match[1].trim() : '';
 
-        // Debug: mostrar en consola para verificar
+        // esto es solo para verificar 
         console.log('Filtro:', filtro, 'Rareza encontrada:', rarezaSkin);
 
         if (filtro === 'todos' || rarezaSkin === filtro) {

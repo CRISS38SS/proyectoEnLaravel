@@ -6,6 +6,7 @@ use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use App\Models\Skin;
 
+// esto sirve para llenar la base de datos con datos iniciales
 class SkinSeeder extends Seeder
 {
     /**

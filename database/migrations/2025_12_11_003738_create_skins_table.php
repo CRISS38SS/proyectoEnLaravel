@@ -11,6 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
+
+        // esto crea una tabla con el nombre de skins
+        // y crea esas columnas
         Schema::create('skins', function (Blueprint $table) {
             $table->id();
             $table->string('nombre');
